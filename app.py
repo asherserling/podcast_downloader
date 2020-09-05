@@ -89,6 +89,7 @@ class PodcastApp:
             return self.choose_podcast()
         elif user_input.isdigit():
             self.episode_menu.download_by_index(int(user_input))
+            return self.choose_episode()
         else:
             print('Invalid input')
             return self.choose_menu_list_length()
