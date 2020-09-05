@@ -7,9 +7,10 @@ from time import sleep
 class PodcastApp:
     def __init__(self):
         self.podcasts = config.podcasts
-        self.current_title = None
         self.episode_menu = None
+        self.episode_menus = {}
         self.choose_podcast()
+        
 
     def choose_podcast(self):
         clear_screen()
@@ -41,11 +42,14 @@ class PodcastApp:
             return self.choose_podcast()
 
         podcast_title = indexed_podcasts[user_input]
-        podcast_url = self.podcasts[podcast_title]
+        episode_menu = self.episode_menus.get(podcast_title)
+   
+        if not episode_menu:
+            podcast_url = self.podcasts[podcast_title]
+            episode_menu = EpisodeMenu(podcast_url)
+            self.episode_menus[podcast_title] = episode_menu
 
-        if self.current_title != podcast_title:
-            self.current_title = podcast_title
-            self.episode_menu = EpisodeMenu(podcast_url)
+        self.episode_menu = episode_menu
         self.choose_episode()
 
     def choose_episode(self):
