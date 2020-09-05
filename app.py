@@ -79,7 +79,7 @@ class PodcastApp:
             print('Entry must be integer or A')
             return self.choose_menu_list_length()
 
-        self.episode_menu.list_episodes(menu_length)
+        self.episode_menu.list_episodes(int(menu_length))
 
         print()
         print('Back: B, Download by Index: Index')
