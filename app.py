@@ -20,7 +20,7 @@ class PodcastApp:
             for index, title in enumerated_podcasts
         }
 
-        menu_format = menu_format = "{:2d}  {}"
+        menu_format = "{:2d}  {}"
         for index, title in enumerated_podcasts:
             print(menu_format.format(index, title))
         print()
