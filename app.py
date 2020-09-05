@@ -1,12 +1,12 @@
 from episode_menu import EpisodeMenu
-from podcasts import podcasts
+import config
 from helpers import clear_screen
 from time import sleep
 
 
 class PodcastApp:
     def __init__(self):
-        self.podcasts = podcasts
+        self.podcasts = config.podcasts
         self.current_title = None
         self.episode_menu = None
         self.choose_podcast()

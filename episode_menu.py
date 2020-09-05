@@ -2,6 +2,7 @@ import requests
 from xml.etree import ElementTree
 import shutil
 import os
+import config
 
 
 class Episode:
@@ -15,7 +16,7 @@ class Episode:
 
         base_file = _format_episode_title(self.title) + '.mp3'
         dest_file = os.path.join(
-            'C:\\Users\\Asher\\Downloads\\podcasts',
+            config.base_dir,
             base_file)
 
         print("Downloading and saving " + base_file)
