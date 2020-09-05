@@ -10,7 +10,9 @@ class PodcastApp:
         self.episode_menu = None
         self.episode_menus = {}
         self.choose_podcast()
-        
+
+    def run(self):
+        return self.choose_podcast()
 
     def choose_podcast(self):
         clear_screen()
@@ -101,3 +103,4 @@ class PodcastApp:
 
 if __name__ == '__main__':
     app = PodcastApp()
+    app.run()
