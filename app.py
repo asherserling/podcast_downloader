@@ -9,7 +9,6 @@ class PodcastApp:
         self.podcasts = config.podcasts
         self.episode_menu = None
         self.episode_menus = {}
-        self.choose_podcast()
 
     def run(self):
         return self.choose_podcast()
@@ -38,14 +37,14 @@ class PodcastApp:
             sleep(1)
             return self.choose_podcast()
 
-        if not (1 <= int(user_input) <= len(self.podcasts)):
+        elif not (1 <= int(user_input) <= len(self.podcasts)):
             print('Invalid index')
             sleep(1)
             return self.choose_podcast()
 
         podcast_title = indexed_podcasts[user_input]
         episode_menu = self.episode_menus.get(podcast_title)
-   
+
         if not episode_menu:
             podcast_url = self.podcasts[podcast_title]
             episode_menu = EpisodeMenu(podcast_url)

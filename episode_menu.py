@@ -14,14 +14,14 @@ class Episode:
         resp = requests.get(self.url, stream=True)
         resp.decode_content = True
 
-        base_file = _format_episode_title(self.title) + '.mp3'
-        dest_file = os.path.join(
+        filename = _format_episode_title(self.title) + '.mp3'
+        filename_with_directory = os.path.join(
             config.base_dir,
-            base_file)
+            filename)
 
-        print("Downloading and saving " + base_file)
+        print("Downloading and saving " + filename)
 
-        with open(dest_file, 'wb') as fout:
+        with open(filename_with_directory, 'wb') as fout:
             shutil.copyfileobj(resp.raw, fout)
 
     def __repr__(self):
@@ -73,6 +73,9 @@ class EpisodeMenu:
             return
         episode = self.episodes[index - 1]
         episode.download()
+
+    def __repr__(self):
+        return "<Episode Menu>"
 
 
 if __name__ == "__main__":
