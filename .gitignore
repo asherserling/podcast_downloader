@@ -1,2 +1,5 @@
 __pycache__/
 config.py
+flask_interface/
+.flaskenv
+flask_version.py

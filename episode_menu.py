@@ -67,8 +67,8 @@ class EpisodeMenu:
             print('Need a url to list episodes')
             return
 
-        menu_format = "{:3d}  {}"
         indexed_menu = list(enumerate(self.episodes, 1))
+        menu_format = "{:4d}  {}"
         for episode in indexed_menu[:limit]:
             print(menu_format.format(episode[0], episode[1].title))
 
