@@ -3,6 +3,7 @@ from xml.etree import ElementTree
 import shutil
 import os
 import config
+from threading import Thread
 
 
 class Episode:
@@ -11,6 +12,10 @@ class Episode:
         self.title = title
 
     def download(self):
+        download_thread = Thread(target=self._download)
+        download_thread.start()
+
+    def _download(self):
         resp = requests.get(self.url, stream=True)
         resp.decode_content = True
 
@@ -73,6 +78,10 @@ class EpisodeMenu:
             return
         episode = self.episodes[index - 1]
         episode.download()
+
+    def download_all(self, indexes):
+        for index in indexes:
+            self.download_by_index(index)
 
     def __repr__(self):
         return "<Episode Menu>"
