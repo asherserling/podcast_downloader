@@ -37,5 +37,5 @@ class MyPodcasts:
         return self.my_podcasts
 
 
-csv_file = 'C:\\Users\\Asher\\Desktop\\podcast_download\\data\\podcasts.csv'
+csv_file = 'C:\\Users\\Asher\\Desktop\\podcast_download\\podcast_download\\podcast\\data\\podcasts.csv'
 my_podcasts = MyPodcasts(csv_file)

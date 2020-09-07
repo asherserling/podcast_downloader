@@ -1,5 +1,5 @@
-import cli.app as app
+import podcast_download.cli.app as cli_app
 
 
-app = app.PodcastApp()
+app = cli_app.PodcastApp()
 app.run()

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body%}
+    <h1>{{ podcast_title }}</h1>
     <ul class="episode-links">
         {% for episode in episode_menu.episodes %}
             <li><a id="episode_{{ episode.id }}" href="#/">{{ episode.title }} </a></li>

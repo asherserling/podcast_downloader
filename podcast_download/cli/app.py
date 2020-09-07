@@ -1,7 +1,8 @@
-from episode_menu import EpisodeMenu
-from my_podcasts import my_podcasts
-from cli.helpers import clear_screen
 from time import sleep
+
+from podcast_download.podcast.episode_menu import EpisodeMenu
+from podcast_download.podcast.my_podcasts import my_podcasts
+from podcast_download.cli.helpers import clear_screen
 
 
 class PodcastApp:
