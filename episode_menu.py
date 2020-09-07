@@ -2,7 +2,6 @@ import requests
 from xml.etree import ElementTree
 import shutil
 import os
-import config
 from threading import Thread
 
 
@@ -10,6 +9,7 @@ class Episode:
     def __init__(self, url, title):
         self.url = url
         self.title = title
+        self.id = None
 
     def download(self):
         download_thread = Thread(target=self._download)
@@ -21,7 +21,7 @@ class Episode:
 
         filename = _format_episode_title(self.title) + '.mp3'
         filename_with_directory = os.path.join(
-            config.base_dir,
+            'C:\\Users\\Asher\\Downloads\\podcasts',
             filename)
 
         print("Downloading and saving " + filename)
@@ -45,13 +45,13 @@ class EpisodeMenu:
     def __init__(self, url=""):
         self.url = url
         if url:
-            self.episodes = self._get_episodes()
+            self.episodes = self._load_episodes()
 
-    def _get_episodes(self):
+    def _load_episodes(self):
         resp = requests.get(self.url)
         tree = ElementTree.fromstring(resp.text)
 
-        return [
+        episodes = [
             Episode(
                 item.find('enclosure').attrib['url'],
                 item.find('title').text
@@ -59,18 +59,10 @@ class EpisodeMenu:
             for item in tree.findall('channel/item')
         ]
 
-    def list_episodes(self, limit=0):
-        if not limit:
-            limit = len(self.episodes)
+        for i in range(len(episodes)):
+            episodes[i].id = i
 
-        if not self.url:
-            print('Need a url to list episodes')
-            return
-
-        indexed_menu = list(enumerate(self.episodes, 1))
-        menu_format = "{:4d}  {}"
-        for episode in indexed_menu[:limit]:
-            print(menu_format.format(episode[0], episode[1].title))
+        return episodes
 
     def download_by_index(self, index):
         if not index or not (1 <= index <= len(self.episodes)):
@@ -82,6 +74,15 @@ class EpisodeMenu:
     def download_all(self, indexes):
         for index in indexes:
             self.download_by_index(index)
+
+    def _get_episode(self, id):
+        for episode in self.episodes:
+            if episode.id == id:
+                return episode
+
+    def download_by_id(self, id):
+        episode = self._get_episode(id)
+        episode.download()
 
     def __repr__(self):
         return "<Episode Menu>"
