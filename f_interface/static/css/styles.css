@@ -1,0 +1,9 @@
+body {
+    padding-top: 25px;
+    font-size: larger;
+    color: black;
+    text-align: center;
+}
+ul {
+    list-style-type: none;
+}

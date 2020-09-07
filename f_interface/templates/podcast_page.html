@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block body%}
+    <ul class="episode-links">
+        {% for episode in episode_menu.episodes %}
+            <li><a id="episode_{{ episode.id }}" href="#/">{{ episode.title }} </a></li>
+        {% endfor %}
+    </ul>
+    <p class="secret-title" id="{{ podcast_title }}"></p>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/static/js/download_episode.js"></script>
+{% endblock %}

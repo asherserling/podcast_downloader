@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block body%}
+    <h3>Add Podcast</h3>
+    <form action="/add" method="POST">
+        <label for="podcast_title">Podcast Title</label><br>
+        <input type="text" name="podcast_title" id="podcast_title"><br>
+        <label for="podcast_url">Url</label><br>
+        <input type="text" name="podcast_url" id="podcast_url"><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <hr>
+
+    <h3>Remove Podcast</h3>
+    <ul>
+        {% for podcast in podcasts %}
+            <li><span>{{ podcast }}</span>&nbsp;<span><a href="/remove/{{ podcast }}">Remove</a></span></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

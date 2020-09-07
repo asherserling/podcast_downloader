@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block body%}
+    <ul>
+        {% for podcast in podcasts %}
+            <li><a href="/podcast/{{ podcast }}">{{ podcast }} </a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
