@@ -1,7 +1,7 @@
 from flask import render_template, request, url_for, redirect
 from podcast_download.f_interface import app
-from podcast_download.podcast.episode_menu import EpisodeMenu
-from podcast_download.podcast.my_podcasts import my_podcasts
+from podcast_download.podcast import EpisodeMenu
+from podcast_download.podcast import my_podcasts
 
 
 @app.after_request

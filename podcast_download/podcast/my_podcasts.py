@@ -1,7 +1,5 @@
 import csv
 import pickle
-import pathlib
-import os
 
 
 class MyPodcasts:
@@ -81,17 +79,6 @@ class PodcastsFromPickle:
 
     def get_podcasts(self):
         return self.parent.get_podcasts()
-
-
-basedir = pathlib.Path(__file__).parent.absolute()
-
-pkl_relative_path = 'data\\podcasts.pkl'
-pkl_absolute_path = os.path.join(basedir, pkl_relative_path)
-
-csv_relative_path = 'data\\podcasts.csv'
-csv_absolute_path = os.path.join(basedir, csv_relative_path)
-
-my_podcasts = MyPodcasts(pkl_absolute_path)
 
 
 if __name__ == '__main__':
