@@ -11,7 +11,7 @@ def open_browser():
 
 
 def run_flask_interface():
-    Timer(1, open_browser).start()
+    Timer(2, open_browser).start()
     flask_app.run(port=2000)
 
 
