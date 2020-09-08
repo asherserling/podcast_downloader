@@ -1,9 +1,42 @@
 body {
     padding-top: 25px;
     font-size: larger;
-    color: black;
+    text-align: center;
+}
+h1 {
+    text-align: center;
+    margin: 40px 0 50px;
+}
+h3 {
     text-align: center;
 }
 ul {
     list-style-type: none;
+}
+.link-container,
+.settings-container {
+    height: 60px;;
+    min-width: 40%;
+    max-width: 80%;
+    padding: 15px;
+    margin: 0 auto 2px;
+    background-color: black;
+}
+.settings-container {
+    position: relative;
+}
+a,
+a:hover,
+.settings__podcast {
+    color: white;
+}
+.settings__podcast {
+    text-align: left;
+}
+.settings__remove {
+    border: 1px solid white;
+    padding: 2px;
+}
+.submit {
+    margin-top: 10px;
 }

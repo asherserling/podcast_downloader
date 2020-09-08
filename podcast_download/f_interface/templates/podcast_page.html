@@ -4,7 +4,10 @@
     <h1>{{ podcast_title }}</h1>
     <ul class="episode-links">
         {% for episode in episode_menu.episodes %}
+        <div class="link-container">
             <li><a id="episode_{{ episode.id }}" href="#/">{{ episode.title }} </a></li>
+        </div>    
+        
         {% endfor %}
     </ul>
     <p class="secret-title" id="{{ podcast_title }}"></p>

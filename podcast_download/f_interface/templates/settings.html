@@ -7,7 +7,7 @@
         <input type="text" name="podcast_title" id="podcast_title"><br>
         <label for="podcast_url">Url</label><br>
         <input type="text" name="podcast_url" id="podcast_url"><br>
-        <input type="submit" value="Submit">
+        <input class="submit" type="submit" value="Submit">
     </form>
 
     <hr>
@@ -15,7 +15,9 @@
     <h3>Remove Podcast</h3>
     <ul>
         {% for podcast in podcasts %}
-            <li><span>{{ podcast }}</span>&nbsp;<span><a href="/remove/{{ podcast }}">Remove</a></span></li>
+        <div class="settings-container">
+            <li><span class="settings__podcast">{{ podcast }}</span>&nbsp;<span class="settings__remove"><a  href="/remove/{{ podcast }}">Remove</a></span></li>
+        </div>
         {% endfor %}
     </ul>
 {% endblock %}

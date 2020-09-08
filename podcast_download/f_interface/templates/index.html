@@ -3,7 +3,9 @@
 {% block body%}
     <ul>
         {% for podcast in podcasts %}
-            <li><a href="/podcast/{{ podcast }}">{{ podcast }} </a></li>
+        <div class="link-container">
+            <li><a class="podcast__link" href="/podcast/{{ podcast }}">{{ podcast }} </a></li>
+        </div>
         {% endfor %}
     </ul>
 {% endblock %}

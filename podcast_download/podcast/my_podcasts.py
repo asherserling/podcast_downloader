@@ -67,7 +67,6 @@ class PodcastsFromPickle:
         self.pickle_file = pickle_file
 
     def load_podcasts(self):
-        podcasts = {}
         with open(self.pickle_file, 'rb') as infile:
             podcasts = pickle.load(infile)
         return podcasts
