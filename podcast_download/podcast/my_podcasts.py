@@ -81,7 +81,4 @@ class PodcastsFromPickle:
 
 
 if __name__ == '__main__':
-    podcasts_from_csv = PodcastsFromCsv(csv_absolute_path)
-    podcast_dict = podcasts_from_csv.load_podcasts()
-
-    pickle.dump(podcast_dict, pkl_absolute_path, pickle.HIGHEST_PROTOCOL)
+    pass
