@@ -49,7 +49,6 @@ def _format_episode_title(original_title):
 class EpisodeMenu:
     def __init__(self, url, interface):
         self.interface = interface
-        print(self.interface.get_destination_dir())
         self.url = url
         if url:
             self.episodes = self._load_episodes()

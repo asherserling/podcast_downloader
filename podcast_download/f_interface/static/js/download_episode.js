@@ -3,7 +3,7 @@ var download_episode = function (podcast_title, episode_id) {
         podcast_title: podcast_title,
         episode_id: episode_id
     }
-    var status_element = ".status-" + episode_id; 
+    var status_element = ".status-" + episode_id;
     $.post('/download', podcast, function () {
         insert_html(status_element, "Download complete")
     })

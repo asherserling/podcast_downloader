@@ -25,7 +25,8 @@ def podcast_page(podcast_title):
     if not episode_menu:
         url = my_podcasts.get_url_for(podcast_title)
         interface = app.config['interface']
-        episode_menu = my_podcasts.episode_menus[podcast_title] = EpisodeMenu(url, interface)
+        episode_menu = my_podcasts.episode_menus[podcast_title] = EpisodeMenu(
+            url, interface)
     return render_template('podcast_page.html',
                            episode_menu=episode_menu,
                            podcast_title=podcast_title)
@@ -44,8 +45,6 @@ def download_episode():
     return ""
 
 
-
-
 @app.route('/settings')
 def settings():
     return render_template('settings.html',
@@ -54,7 +53,6 @@ def settings():
 
 @app.route('/add', methods=['POST'])
 def add_podcast():
-    print(request.form)
     title = request.form['podcast_title']
     url = request.form['podcast_url']
     my_podcasts.add(title, url)
