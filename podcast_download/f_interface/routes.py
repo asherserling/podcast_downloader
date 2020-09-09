@@ -21,7 +21,8 @@ def podcast_page(podcast_title):
     episode_menu = my_podcasts.episode_menus.get(podcast_title)
     if not episode_menu:
         url = my_podcasts.get_url_for(podcast_title)
-        episode_menu = my_podcasts.episode_menus[podcast_title] = EpisodeMenu(url)
+        interface = app.config['interface']
+        episode_menu = my_podcasts.episode_menus[podcast_title] = EpisodeMenu(url, interface)
     return render_template('podcast_page.html',
                            episode_menu=episode_menu,
                            podcast_title=podcast_title)

@@ -31,12 +31,12 @@ class MyPodcasts:
 
 def podcast_loader_factory(parent, data_file):
     if data_file.endswith('.csv'):
-        return PodcastsFromCsv(parent, data_file)
+        return PodcastsCsv(parent, data_file)
     elif data_file.endswith('.pkl'):
-        return PodcastsFromPickle(parent, data_file)
+        return PodcastsPickle(parent, data_file)
 
 
-class PodcastsFromCsv:
+class PodcastsCsv:
     def __init__(self, parent, csv_file):
         self.parent = parent
         self.csv_file = csv_file
@@ -61,7 +61,7 @@ class PodcastsFromCsv:
         return self.parent.get_podcasts()
 
 
-class PodcastsFromPickle:
+class PodcastsPickle:
     def __init__(self, parent, pickle_file):
         self.parent = parent
         self.pickle_file = pickle_file

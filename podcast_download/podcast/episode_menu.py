@@ -6,9 +6,10 @@ from threading import Thread
 
 
 class Episode:
-    def __init__(self, url, title):
+    def __init__(self, url, title, parent):
         self.url = url
         self.title = title
+        self.parent = parent
         self.id = None
 
     def download(self):
@@ -19,9 +20,13 @@ class Episode:
         resp = requests.get(self.url, stream=True)
         resp.decode_content = True
 
+        destination_dir = self.parent.get_destination_dir()
+        if not os.path.exists(destination_dir):
+            os.mkdir(destination_dir)
+
         filename = _format_episode_title(self.title) + '.mp3'
         filename_with_directory = os.path.join(
-            'C:\\Users\\Asher\\Downloads\\podcasts',
+            destination_dir,
             filename)
 
         print("Downloading and saving " + filename)
@@ -42,7 +47,9 @@ def _format_episode_title(original_title):
 
 
 class EpisodeMenu:
-    def __init__(self, url=""):
+    def __init__(self, url, interface):
+        self.interface = interface
+        print(self.interface.get_destination_dir())
         self.url = url
         if url:
             self.episodes = self._load_episodes()
@@ -53,15 +60,15 @@ class EpisodeMenu:
 
         episodes = [
             Episode(
-                item.find('enclosure').attrib['url'],
-                item.find('title').text
+                url=item.find('enclosure').attrib['url'],
+                title=item.find('title').text,
+                parent=self
             )
             for item in tree.findall('channel/item')
         ]
 
         for i in range(len(episodes)):
             episodes[i].id = i
-
         return episodes
 
     def download_by_index(self, index):
@@ -83,6 +90,9 @@ class EpisodeMenu:
     def download_by_id(self, id):
         episode = self._get_episode(id)
         episode.download()
+
+    def get_destination_dir(self):
+        return self.interface.get_destination_dir()
 
     def __repr__(self):
         return "<Episode Menu>"

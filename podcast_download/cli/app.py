@@ -6,7 +6,8 @@ from podcast_download.cli.helpers import clear_screen
 
 
 class PodcastApp:
-    def __init__(self):
+    def __init__(self, destination_dir):
+        self.destination_dir = destination_dir
         self.podcasts = my_podcasts.get_podcasts()
         self.episode_menu = None
         self.episode_menus = {}
@@ -48,7 +49,7 @@ class PodcastApp:
 
         if not episode_menu:
             podcast_url = self.podcasts[podcast_title]
-            episode_menu = EpisodeMenu(podcast_url)
+            episode_menu = EpisodeMenu(podcast_url, interface=self)
             self.episode_menus[podcast_title] = episode_menu
 
         self.episode_menu = episode_menu
@@ -110,6 +111,9 @@ class PodcastApp:
         menu_format = "{:4d}  {}"
         for episode in episodes[:limit]:
             print(menu_format.format(episode.id + 1, episode.title))
+
+    def get_destination_dir(self):
+        return self.destination_dir
 
 
 if __name__ == '__main__':

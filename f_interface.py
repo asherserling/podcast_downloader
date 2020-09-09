@@ -1,12 +1,8 @@
-import webbrowser
+from podcast_download.f_interface import app, FlaskPodcasts
 
-from podcast_download.f_interface import app
-
-
-def open_browser():
-    webbrowser.open_new('http://127.0.0.1:2000/')
+destination_dir = './downloads'
+flask_podcast_app = FlaskPodcasts(app, destination_dir)
 
 
 if __name__ == '__main__':
-    open_browser()
-    app.run(port=2000)
+    flask_podcast_app.run()
