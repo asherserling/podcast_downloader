@@ -1,23 +1,52 @@
 {% extends 'base.html' %}
 
 {% block body%}
-    <h3>Add Podcast</h3>
-    <form action="/add" method="POST">
-        <label for="podcast_title">Podcast Title</label><br>
-        <input type="text" name="podcast_title" id="podcast_title"><br>
-        <label for="podcast_url">Url</label><br>
-        <input type="text" name="podcast_url" id="podcast_url"><br>
-        <input class="submit" type="submit" value="Submit">
-    </form>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <h3>Add Podcast</h3>
+                <form action="/add" method="POST">
+                    <div class="form-group">
+                      <label for="podcast_title">Podcast Title</label>
+                      <input type="text" class="form-control" name="podcast_title" id="podcast_title" placeholder="Title">      
+                    </div>
+                    <div class="form-group">
+                      <label for="podcast_url">Url</label>
+                      <input type="text" class="form-control" name="podcast_url" id="podcast_url"  placeholder="feed.example.com/dumbexample.12345">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
     <hr>
 
-    <h3>Remove Podcast</h3>
-    <ul>
-        {% for podcast in podcasts %}
-        <div class="settings-container">
-            <li><span class="settings__podcast">{{ podcast }}</span>&nbsp;<span class="settings__remove"><a  href="/remove/{{ podcast }}">Remove</a></span></li>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <h3>Remove Podcast</h3>
+                <table class="table table-hover"> 
+                    {% for podcast in podcasts %}
+                    <tr>
+                        <td>
+                            <p class="settings__podcast">{{ podcast }}</p>
+                        </td>
+                        <td>
+                            <a  href="/remove/{{ podcast }}">Remove</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
-        {% endfor %}
-    </ul>
+    </div>
+
+    
+
 {% endblock %}
+

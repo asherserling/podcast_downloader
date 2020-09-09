@@ -12,11 +12,11 @@ class Episode:
         self.parent = parent
         self.id = None
 
-    def download(self):
-        download_thread = Thread(target=self._download)
-        download_thread.start()
+    # def download(self):
+    #     download_thread = Thread(target=self._download)
+    #     download_thread.start()
 
-    def _download(self):
+    def download(self):
         resp = requests.get(self.url, stream=True)
         resp.decode_content = True
 

@@ -1,4 +1,7 @@
+from threading import Thread
+
 from flask import render_template, request, url_for, redirect
+
 from podcast_download.f_interface import app
 from podcast_download.podcast import EpisodeMenu
 from podcast_download.podcast import my_podcasts
@@ -33,8 +36,14 @@ def download_episode():
     podcast_title = request.form['podcast_title']
     episode_id = int(request.form['episode_id'])
     episode_menu = my_podcasts.episode_menus[podcast_title]
-    episode_menu.download_by_id(episode_id)
+
+    downloader = episode_menu.download_by_id
+    thread = Thread(target=downloader, args=[episode_id])
+    thread.start()
+    thread.join()
     return ""
+
+
 
 
 @app.route('/settings')
@@ -45,6 +54,7 @@ def settings():
 
 @app.route('/add', methods=['POST'])
 def add_podcast():
+    print(request.form)
     title = request.form['podcast_title']
     url = request.form['podcast_url']
     my_podcasts.add(title, url)

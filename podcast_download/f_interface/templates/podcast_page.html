@@ -2,15 +2,22 @@
 
 {% block body%}
     <h1>{{ podcast_title }}</h1>
-    <ul class="episode-links">
-        {% for episode in episode_menu.episodes %}
-        <div class="link-container">
-            <li><a id="episode_{{ episode.id }}" href="#/">{{ episode.title }} </a></li>
-        </div>    
-        
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <div class="row episode-links">
+            <table>
+                {% for episode in episode_menu.episodes %}
+                <tr>
+                    <td class=col-sm-6>
+                        <div class="episode" id="{{ episode.id }}"><a href="#/">{{ episode.title }}</a></div>
+                    </td>
+                    <td>
+                        <div class="download-status status-{{ episode.id }}"></div> 
+                    </td>
+                </tr>
+                {% endfor %} 
+            </table>
+        </div>
+    </div>
     <p class="secret-title" id="{{ podcast_title }}"></p>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/static/js/download_episode.js"></script>
 {% endblock %}
