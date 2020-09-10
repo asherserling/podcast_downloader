@@ -1,9 +1,17 @@
 body {
     font-size: 2em;
+    background-color: rgba(211, 211, 211, 0.342);
+}
+.h1-container {
+    text-align: center;
 }
 h1 {
+    padding: 10px;
+    display: inline-block;
+    border: 2px solid black;
     text-align: center;
     margin: 40px 0 50px;
+    border-radius: 10px;
 }
 h3 {
     text-align: center;
@@ -12,8 +20,9 @@ a, a:hover, .settings__podcast {
     color:black;
 }
 .episode, .podcast {
-    background-color: rgb(212, 206, 206);
+    background-color: rgb(219, 216, 216);
     margin-bottom: 2px;
+    border-radius: 10px;;
 }
 .podcast-link__box {
     padding: 2px;
